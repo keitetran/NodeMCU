@@ -22,16 +22,18 @@
 // Debug logger
 #ifdef DEBUG_LOG
 #define Logger(x) Serial.println(x)
+#define Logger2(x) Serial.print(x)
 #else
 #define Logger(x)
+#define Logger2(x)
 #endif
 
 // Wifi info
-#define WIFI_SSID "xxxx" 
+#define WIFI_SSID "832947893274988" 
 #define WIFI_PASSWORD "xxxx"
 
 // MQTT info
-#define MQTT_SERVER "220.144.xxx.xxx" 
+#define MQTT_SERVER "xxxx.144.20.xxxx" 
 #define MQTT_SERVER_PORT 1883
 #define MQTT_SERVER_USERNAME "homeassistant"
 #define MQTT_SERVER_PASSWORD "xxxx"

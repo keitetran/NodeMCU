@@ -5,14 +5,14 @@
 */
 
 // Config file
-#include "./Extra/Config.h";
+#include "./Config.h";
 
 // Library
 #include <Arduino.h>            // Arduino
 #include <ESP8266WiFi.h>        // https://www.arduino.cc/en/Reference/WiFiClient
 #include <PubSubClient.h>       // https://github.com/knolleary/pubsubclient
-#include "./Extra/MySwitch.h"   // Custom class MySwitch
-#include "./Extra/UpdateOTA.h"  // Custom class update OTA
+#include "./MySwitch.h"   // Custom class MySwitch
+#include "./UpdateOTA.h"  // Custom class update OTA
 
 // MQTT name
 #define MQTT_NAME "EspBathRoom"
@@ -50,14 +50,20 @@ MySwitch switchFrontLight;     // Custom class => Khởi tạo đối tượng c
 // ====================================================
 void setup() {
   Serial.begin(115200);  // Initialize serial communication
-  Serial.println();
+  Logger("");
+  delay(10);
 
   // Connect to wifi
   Logger("Connecting to wifi...");
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Logger2(".");
+  }
+  Logger("");
 
   // Debug local IP
-  Logger("Wifi connected.. IP address: ");
+  Logger2("Wifi connected.. IP address: ");
   Logger(WiFi.localIP());
 
   // Setup update OTA
