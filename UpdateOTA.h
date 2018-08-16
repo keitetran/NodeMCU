@@ -21,9 +21,7 @@ void UpdateOTA::init(char* _password) {
   // ArduinoOTA.setHostname("myesp8266");
 
   // No authentication by default
-  if (_password != "") {
-    ArduinoOTA.setPassword(_password);
-  }
+  if (_password != "") ArduinoOTA.setPassword(_password);
 
   // Password can be set with it's md5 value as well
   // MD5(admin) = 21232f297a57a5a743894a0e4a801fc3
